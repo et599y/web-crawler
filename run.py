@@ -10,7 +10,7 @@ options.add_argument("--disable-notifications")
 chrome = webdriver.Chrome('./chromedriver', chrome_options=options)
 
 # get band's all albums
-chrome.get("https://rocknation.su/mp3/band-61")
+chrome.get("https://rocknation.su/mp3/band-77") # 專輯列表
 soup = BeautifulSoup(chrome.page_source, 'html.parser')
 div = soup.find("div", {"id": "clips"})
 albums = []
@@ -27,7 +27,7 @@ for album in albums:
         for a in div.findAll('a'):
             if a.get('onclick') != None:
                 txt_files += a.get('onclick')[11:-2] + '\n'
- c               print(a.get('onclick')[11:-2])
+                print(a.get('onclick')[11:-2])
     
     # write to txt file
     album_name = soup.find("div", {"class": "brad"}).find('span').get_text()
